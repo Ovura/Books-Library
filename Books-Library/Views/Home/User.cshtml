@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Books_Library.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-outline-success"><i class="far fa-plus-square"></i>New User</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Profile" asp-route-id="@user.Id">@Html.DisplayFor(modelItem => user.FullName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Address)
+                </td>
+                <td>
+                    @*                <a asp-action="AddOrEdit" asp-route-id="@item.EmployeeId"><i class="fa fa-marker fa-lg"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+                *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
